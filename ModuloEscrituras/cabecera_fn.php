@@ -1,7 +1,16 @@
 <?php
+session_start();
 	//Manejo de Sesiones
-	if(!isset($_SESSION)){
-		SESSION_START();}
+	//if(!isset($_SESSION)){
+	//	SESSION_START();}
+    require_once '../core/conection.php';
+    $link = new Conection();
+    $link->conectar();
+
+    $codigo_usuario = $_SESSION['personal'];
+    
+    $consulta = "SELECT CONCAT(nom_usu,' ',pat_usu,' ',mat_usu) AS trabajador FROM usuarios WHERE cod_usu = $codigo_usuario";
+    $personal=$link->fetch_array($link->consulta($consulta));
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -49,13 +58,13 @@
           <div class="nav-collapse">
             <ul class="nav">
                 <li class="active"><a href="index.php">Inicio</a></li>
-              <li><a href="#about">Ingresos del Dia</a></li>
-              <li><a href="#contact">Cantidad de Escrituras Ingresadas</a></li>
-              <li><a href="#contact">Corregir Escritura</a></li>
-              <li><a href="#contact">Salir del Sistema</a></li>
+              <li><a href="#IngresosDia">Ingresos del Dia</a></li>
+              <li><a href="#cantidad">Cantidad de Escrituras Ingresadas</a></li>
+              <li><a href="#corregir">Corregir Escritura</a></li>
+              <li><a href="../core/sessionclose.php">Salir del Sistema</a></li>
             </ul>
           </div><!--/.nav-collapse -->
-          <div>En Sistema: Nombre de la persona</div>
+          <div>Logueado como: <?php echo $personal['trabajador'];  ?></div>
         </div>
       </div>
     </div>

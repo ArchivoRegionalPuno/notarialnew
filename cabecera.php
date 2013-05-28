@@ -49,8 +49,8 @@
           <div class="nav-collapse">
             <ul class="nav">
                 <li class="active"><a href="index.php">Inicio</a></li>
-              <li><a href="#about">Busqueda</a></li>
-              <li><a href="#contact">Biblioteca</a></li>
+              <li><a href="#Busqueda">Busqueda</a></li>
+              <li><a href="#Biblioteca">Biblioteca</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

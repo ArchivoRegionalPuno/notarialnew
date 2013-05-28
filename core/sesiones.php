@@ -1,4 +1,5 @@
 <?php
+session_start();
 require './conection.php';
 $conn = new Conection();
 $conn->conectar();
