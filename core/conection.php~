@@ -45,7 +45,7 @@ class Conection {
     }
 
     public function getTotalConsultas() {
-        return $this->total_consultas++;
+        return $this->total_consultas;
     }
 }
 ?>
