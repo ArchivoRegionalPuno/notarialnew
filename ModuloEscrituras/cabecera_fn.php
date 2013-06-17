@@ -1,16 +1,12 @@
 <?php
-session_start();
-	//Manejo de Sesiones
-	//if(!isset($_SESSION)){
-	//	SESSION_START();}
-    require_once '../core/conection.php';
-    $link = new Conection();
-    $link->conectar();
 
-    $codigo_usuario = $_SESSION['personal'];
-    
-    $consulta = "SELECT CONCAT(nom_usu,' ',pat_usu,' ',mat_usu) AS trabajador FROM usuarios WHERE cod_usu = $codigo_usuario";
-    $personal=$link->fetch_array($link->consulta($consulta));
+	//Manejo de Sesiones
+	if(!isset($_SESSION)){
+		SESSION_START();
+                $codigo_usuario = $_SESSION['personal'];
+                echo "Codigo: ".$codigo_usuario;
+        }
+        
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -28,7 +24,7 @@ session_start();
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
-    <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -36,14 +32,14 @@ session_start();
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-    <script src="../js/jquery.js"></script>
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    <script src="js/jquery.js"></script>
   </head>
-|
+
   <body>
 
     <div class="navbar navbar-fixed-top">
@@ -58,13 +54,11 @@ session_start();
           <div class="nav-collapse">
             <ul class="nav">
                 <li class="active"><a href="index.php">Inicio</a></li>
-              <li><a href="#IngresosDia">Ingresos del Dia</a></li>
-              <li><a href="#cantidad">Cantidad de Escrituras Ingresadas</a></li>
-              <li><a href="#corregir">Corregir Escritura</a></li>
-              <li><a href="../core/sessionclose.php">Salir del Sistema</a></li>
+              <li><a href="#Busqueda">Ingresos del dia</a></li>
+              <li><a href="#Biblioteca">Reporte de ingreso mensual</a></li>
+              <li><a href="../core/sessionclose.php">Cerrar Sesion</a></li>
             </ul>
           </div><!--/.nav-collapse -->
-          <div>Logueado como: <?php echo $personal['trabajador'];  ?></div>
         </div>
       </div>
     </div>

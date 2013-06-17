@@ -1,6 +1,6 @@
 <?php
 	$host = 'localhost';
 	$usuario = 'root';
-	$passwd = '';
+	$passwd = 'root';
 	$basedatos = 'dbarp';
 ?>

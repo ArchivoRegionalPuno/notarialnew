@@ -19,7 +19,7 @@ class Conection {
         $this->conectar();
     }
 
-    function conectar() {
+    private function conectar() {
         $this->conexion = mysql_connect($this->hostdb, $this->userdb, $this->paswddb) or die(header("Location: ../404.php?error=".mysql_error()));
         mysql_select_db($this->basedatos, $this->conexion) or die(header("Location: ../404.php?error=No se puede conectar a la Base de Datos. ".mysql_error()));
         @mysql_query("SET NAMES 'utf8'");

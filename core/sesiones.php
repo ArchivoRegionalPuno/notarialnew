@@ -2,7 +2,6 @@
 session_start();
 require './conection.php';
 $conn = new Conection();
-$conn->conectar();
 
 $usuario = $_REQUEST['usuario'];
 $pass = $_REQUEST['passwd'];
@@ -37,4 +36,3 @@ if ($num > 0) {
     header("Location: ../index.php");
 }
 ?>
-<img src =""
