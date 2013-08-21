@@ -10,14 +10,21 @@ $codigo_usuario = $_SESSION['personal'];
 
 $sql = "SELECT codusuario,codnotario,numlibro,fechainicio,observaciones FROM proyectos WHERE codusuario =".$codigo_usuario." AND estado =1 LIMIT 0 , 10;";
         $valor = $con->consulta($sql);
-$sql_escrituras = "SELECT MAX(cod_sct),num_sct, num_fol, cod_pro FROM escrituras1 WHERE cod_usu=".$codigo_usuario." LIMIT 0,10;";
-$query= $con->consulta($sql_escrituras);
-$ultimos = $con->fetch_array($query);
-echo "Ultima Escritura Ingresada: ".$ultimos[1]; 
-echo "<br>";
-echo "Ultimo Folio donde se quedo: ".$ultimos[2]; 
-echo "<br>";
-echo "PROTOCOLO: ".$ultimos[3]; 
+        $numero = $con->num_rows($sql);
+        if($numero > 0){
+            $sql_escrituras = "SELECT MAX(cod_sct),num_sct, num_fol, cod_pro FROM escrituras1 WHERE cod_usu=".$codigo_usuario." LIMIT 0,10;";
+            $query= $con->consulta($sql_escrituras);
+            $ultimos = $con->fetch_array($query);
+            echo "Ultima Escritura Ingresada: ".$ultimos[1]; 
+            echo "<br>";
+            echo "Ultimo Folio donde se quedo: ".$ultimos[2]; 
+            echo "<br>";
+            echo "PROTOCOLO: ".$ultimos[3]; 
+        }
+        else{
+            echo "No tiene ningun proyecto Abierto.";
+        }
+
 
 ?>
 <html>
@@ -44,7 +51,7 @@ echo "PROTOCOLO: ".$ultimos[3];
              <tbody>
                  <tr>
                      <?php 
-                     while ($data = $con->fetch_array($valor)){
+                         while ($data = $con->fetch_array($valor)){
                      ?>
                      <td><?php echo $data[1];?></td>
                      <td><?php echo $data[2];?></td>
